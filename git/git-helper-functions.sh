@@ -1,4 +1,4 @@
-source /home/alex/scripts/trycatch.sh
+#source /home/alex/scripts/trycatch.sh
 
 # expects [b(ug -> fix)/f(eat)/c(hore)] [W(ebapi)/C(p)] [number of branch to check out]
 # example: f w 1234 = git checkout feat/WEBAPI-1234
