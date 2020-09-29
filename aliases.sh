@@ -56,7 +56,7 @@ alias gro="__git_reset_current_branch"
 
 # meta alias
 alias alias-load="source ~/.bashrc"
-alias alias-edit="code ~/.bashrc"
+alias alias-edit="code /home/alex/scripts/aliases.sh"
 
 # docker
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -85,4 +85,4 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 
 
 #linux system
-alias build-grub='grub-mkconfig -o /boot/grub/grub.cfg'
+alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
