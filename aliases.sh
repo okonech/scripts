@@ -86,3 +86,6 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 
 #linux system
 alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
+
+#gcp
+alias gcp-port-forward='~/scripts/gcp-port-forward.sh'
