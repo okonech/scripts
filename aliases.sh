@@ -5,6 +5,7 @@ alias super-clean-all="rm -rf node_modules && npx lerna clean --yes && super-cle
 #monorepo build
 alias cbsq="rm -rf node_modules && npx lerna clean --yes && npx lerna bootstrap"
 alias cbs="super-clean-all && npx lerna bootstrap"
+alias cbw="super-clean-all && scripts/watch-server.sh"
 alias cbd="super-clean-all && scripts/build.sh"
 alias cbda="cbs && npx lerna run build --stream --concurrency 1"
 
