@@ -39,7 +39,7 @@ addd() {
 }
 
 #monorepo cloud dev
-alias cloud-dep="scripts/build-pkg.sh -d -l smc cp"
+alias cloud-dep="scripts/build-pkg.sh -d -l -b smc cp"
 
 #cloud
 alias jenkins="gcloud compute ssh --project=nth-fort-242316 --zone=us-east4-c rest-jenkins-a --internal-ip"
