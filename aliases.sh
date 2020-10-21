@@ -51,13 +51,13 @@ alias gpf="git push --force-with-lease"
 alias recent="git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
 
 # git custom functions
-source /home/alex/scripts/git/git-helper-functions.sh
+source ~/scripts/git/git-helper-functions.sh
 alias gc="__git_checkout_work_branch"
 alias gro="__git_reset_current_branch"
 
 # meta alias
 alias alias-load="source ~/.bashrc"
-alias alias-edit="code /home/alex/scripts/aliases.sh"
+alias alias-edit="code ~/scripts/aliases.sh"
 
 # docker
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
