@@ -80,6 +80,8 @@ lsColorGroupingOverride() {
     fi
 }
 
+alias delete-locks='find . -type f -name `package-lock.json` -delete'
+
 #wapi-version
 alias wapi-bump='wapi-version --jiraCreds ~/Downloads/jira-credentials.json bump'
 alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-release --allow-unpublished-deps'
