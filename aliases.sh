@@ -71,6 +71,7 @@ alias restart-plasma='kquitapp5 plasmashell && kstart5 plasmashell'
 #useful stuff
 alias plz='sudo $(fc -ln -1)'
 alias ls='lsColorGroupingOverride'
+alias install-npm-globals='~/scripts/install-npm-globals.sh'
 
 # auto pipe ls -la to more as ls -la | more
 lsColorGroupingOverride() {
