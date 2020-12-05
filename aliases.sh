@@ -3,8 +3,9 @@ alias super-clean-artifacts="cg && scripts/super-clean.sh -i -l -s"
 alias super-clean-all="cg && rm -rf node_modules && npx lerna clean --yes && super-clean-artifacts"
 
 #monorepo build
-alias cbsq="rm -rf node_modules && npx lerna clean --yes && npx lerna bootstrap"
-alias cbs="super-clean-all && npx lerna bootstrap"
+alias lbs="npx lerna bootstrap --ci"
+alias cbsq="rm -rf node_modules && npx lerna clean --yes && lbs"
+alias cbs="super-clean-all && lbs"
 alias cbw="super-clean-all && scripts/watch-server.sh"
 alias cbd="super-clean-all && scripts/build.sh"
 alias cbda="cbs && npx lerna run build --stream --concurrency 1"
@@ -49,6 +50,7 @@ alias gcm="git checkout master && git pull"
 alias grim="git fetch && git rebase -i origin/master"
 alias gpf="git push --force-with-lease"
 alias recent="git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
+# navigate to top of repo
 alias cg='cd `git rev-parse --show-toplevel`'
 
 # git custom functions
