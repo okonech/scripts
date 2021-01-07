@@ -67,8 +67,8 @@ alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true 
 alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias docker-maint='docker-clean-containers && docker-clean-images'
 
-# plasmashell
-alias restart-plasma='kquitapp5 plasmashell && kstart5 plasmashell'
+# plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
+alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell'
 
 #useful stuff
 alias plz='sudo $(fc -ln -1)'
