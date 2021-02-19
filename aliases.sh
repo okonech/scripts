@@ -75,6 +75,10 @@ alias plz='sudo $(fc -ln -1)'
 alias ls='lsColorGroupingOverride'
 alias install-npm-globals='~/scripts/install-npm-globals.sh'
 
+# code-oss uses a different extensions repo. I want the microsoft repo.
+# Apply the https://github.com/VSCodium/vscodium/issues/418#issuecomment-643664182 fix
+alias fix-code-oss='sudo python3 ~/scripts/fix-oss.py'
+
 # auto pipe ls -la to more as ls -la | more
 lsColorGroupingOverride() {
     if [[ $@ == "-la" ]]; then
