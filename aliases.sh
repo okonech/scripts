@@ -19,7 +19,7 @@ add() {
 	else
 		PKG_NAME=$(node -p -e "require('./package.json').name")
 		# passes multiple packages and flags to lerna add. 'add ng-packagr --dev' will install to dev dependencies.
-		lerna add --scope=$PKG_NAME $* --no-bootstrap && lerna bootstrap --ignore-scripts
+		npx lerna add --scope=$PKG_NAME $* --no-bootstrap && lerna bootstrap --ignore-scripts
 	fi
 }
 
@@ -33,9 +33,9 @@ addd() {
 		for var in "$@"
 		do
 			PKG_NAME=$(node -p -e "require('./package.json').name")
-			lerna add --dev --scope=$PKG_NAME $var --no-bootstrap
+			npx lerna add --dev --scope=$PKG_NAME $var --no-bootstrap
 		done
-		lerna bootstrap --ignore-scripts
+		npx lerna bootstrap --ignore-scripts
 	fi
 }
 
@@ -67,9 +67,6 @@ alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true 
 alias docker-clean-containers='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 alias docker-maint='docker-clean-containers && docker-clean-images'
 
-# plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
-alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell'
-
 #useful stuff
 alias plz='sudo $(fc -ln -1)'
 alias ls='lsColorGroupingOverride'
@@ -97,6 +94,10 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 
 #linux system
 alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
+alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
+# plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
+alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell'
+
 
 #gcp
 alias gcp-port-forward='~/scripts/gcp-port-forward.sh'
