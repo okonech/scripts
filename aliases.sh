@@ -6,7 +6,7 @@ alias super-clean-all="cg && rm -rf node_modules && npx lerna clean --yes && sup
 alias lbs="npx lerna bootstrap --ci"
 alias cbsq="rm -rf node_modules && npx lerna clean --yes && lbs"
 alias cbs="super-clean-all && lbs"
-alias cbw="super-clean-all && scripts/watch-server.sh"
+alias cbw="super-clean-all && scripts/bootstrap.sh && scripts/watch-server.sh --skip-bootstrap"
 alias cbd="super-clean-all && scripts/build.sh"
 alias cbda="cbs && npx lerna run build --stream --concurrency 1"
 
