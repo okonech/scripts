@@ -97,6 +97,8 @@ alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
 alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
 # plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
 alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell'
+# reboot into windows from dual boot, windows is 3rd option in grub
+alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 
 
 #gcp
