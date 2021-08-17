@@ -1,3 +1,4 @@
+#!/bin/bash
 # Configuration
 COMMAND=''
 WATCH_INTERVAL_SECONDS=15
