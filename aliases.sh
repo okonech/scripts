@@ -1,6 +1,6 @@
 # monorepo clean
 alias super-clean-artifacts="cg && scripts/super-clean.sh -i -l -s"
-alias super-clean-all="cg && rm -rf node_modules && npx lerna clean --yes && super-clean-artifacts"
+alias super-clean-all="cg && npx lerna clean --yes && rm -rf node_modules && super-clean-artifacts"
 
 #monorepo build
 alias lbs="npx lerna bootstrap --ci"
