@@ -1,14 +1,14 @@
 # monorepo clean
 alias super-clean-artifacts="cg && scripts/super-clean.sh -i -l -s"
-alias super-clean-all="cg && npx lerna clean --yes && rm -rf node_modules && super-clean-artifacts"
+alias super-clean-all="cg && npx merna clean --yes && rm -rf node_modules && super-clean-artifacts"
 
 #monorepo build
-alias lbs="npx lerna bootstrap --ci"
-alias cbsq="super-clean-all && npx lerna bootstrap --ignore-scripts"
+alias lbs="npx merna bootstrap --ci"
+alias cbsq="super-clean-all && npx merna bootstrap --ignore-scripts"
 alias cbs="super-clean-all && lbs"
 alias cbw="super-clean-all && scripts/bootstrap.sh && scripts/watch-server.sh --skip-bootstrap"
 alias cbd="super-clean-all && scripts/build.sh"
-alias cbda="cbs && npx lerna run build --stream --concurrency 1"
+alias cbda="cbs && npx merna run build --stream --concurrency 1"
 
 # monorepo add dependency to current package
 # add @angular-devkit/schematics --dev 
@@ -18,8 +18,8 @@ add() {
     	echo "Must be in a folder containing lerna managed package.json"
 	else
 		PKG_NAME=$(node -p -e "require('./package.json').name")
-		# passes multiple packages and flags to lerna add. 'add ng-packagr --dev' will install to dev dependencies.
-		npx lerna add --scope=$PKG_NAME $* --no-bootstrap && lerna bootstrap --ignore-scripts
+		# passes multiple packages and flags to merna add. 'add ng-packagr --dev' will install to dev dependencies.
+		npx merna add --scope=$PKG_NAME $* --no-bootstrap && merna bootstrap --ignore-scripts
 	fi
 }
 
@@ -33,9 +33,9 @@ addd() {
 		for var in "$@"
 		do
 			PKG_NAME=$(node -p -e "require('./package.json').name")
-			npx lerna add --dev --scope=$PKG_NAME $var --no-bootstrap
+			npx merna add --dev --scope=$PKG_NAME $var --no-bootstrap
 		done
-		npx lerna bootstrap --ignore-scripts
+		npx merna bootstrap --ignore-scripts
 	fi
 }
 

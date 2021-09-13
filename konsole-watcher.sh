@@ -16,23 +16,30 @@ fi
 
 # Function to get the current sessions and write them to a file
 function getSessions {
-    pid=$(pgrep konsole -u $USER)
+    # get first process of konsole for user
+    pid=($(pgrep konsole -u $USER));
     local SESSIONS=$(qdbus org.kde.konsole-$pid | grep '/Sessions/')
     if [[ ${SESSIONS} ]] ; then
-       echo "# Most recent session list " $(date) > ${SAVEFILE_TERMINAL}
-       for i in ${SESSIONS}; do
-       local FORMAT=$(qdbus org.kde.konsole-$pid $i tabTitleFormat 0)
-       local PROCESSID=$(qdbus org.kde.konsole-$pid $i processId)
-       local CWD=$(pwdx ${PROCESSID} | sed -e "s/^[0-9]*: //")
-       if [[ $(pgrep --parent ${PROCESSID}) ]] ; then
-           CHILDPID=$(pgrep --parent ${PROCESSID})
-           COMMAND=$(ps -p ${CHILDPID} -o args=)
-       fi 
-       echo "workdir: ${CWD};; title: ${FORMAT};; command:${COMMAND}" >> ${SAVEFILE_TERMINAL}
-       COMMAND=''
-       done
+        echo "# Most recent session list " $(date) > ${SAVEFILE_TERMINAL}
+        for session in ${SESSIONS}; do
+            local FORMAT=$(qdbus org.kde.konsole-$pid $session tabTitleFormat 0)
+            local PROCESSID=$(qdbus org.kde.konsole-$pid $session processId)
+            local CWD=$(pwdx ${PROCESSID} | sed -e "s/^[0-9]*: //")
+            if [[ $(pgrep --parent ${PROCESSID}) ]] ; then
+                CHILDPID=$(pgrep --parent ${PROCESSID})
+                COMMAND=$(ps -p ${CHILDPID} -o args=)
+            fi 
+            echo "workdir: ${CWD};; title: ${FORMAT};; command:${COMMAND}";
+            echo "workdir: ${CWD};; title: ${FORMAT};; command:${COMMAND}" >> ${SAVEFILE_TERMINAL}
+            COMMAND=''
+        done
     fi
 }
+
+if [ "$1" = "save" ] ; then
+    getSessions;
+    exit
+fi
 
 #Update the Konsole sessions every WATCH_INTERVAL_SECONDS seconds
 while true; do sleep ${WATCH_INTERVAL_SECONDS}; getSessions; done &
