@@ -47,7 +47,7 @@ alias jenkins="gcloud compute ssh --project=nth-fort-242316 --zone=us-east4-c re
 
 #git
 alias gcm="git-fetch && git checkout main && git pull"
-alias grim="git-fetch && && git rebase -i origin/main"
+alias grim="git-fetch && git rebase -i origin/main"
 alias gpf="git-fetch && git push --force-with-lease"
 alias recent="git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
 # navigate to top of repo
