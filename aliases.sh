@@ -3,9 +3,9 @@ alias super-clean-artifacts="cg && scripts/super-clean.sh -i -l -s"
 alias super-clean-all="cg && npx merna clean --yes && rm -rf node_modules && super-clean-artifacts"
 
 #monorepo build
-alias lbs="npx merna bootstrap --ci"
+alias lbs="npx merna bootstrap --ci --force-ci-when-hoisting"
 alias cbsq="super-clean-all && npx merna bootstrap --ignore-scripts"
-alias cbs="super-clean-all && lbs"
+alias cbs="super-clean-all && scripts/bootstrap.sh"
 alias cbw="super-clean-all && scripts/bootstrap.sh && scripts/watch-server.sh --skip-bootstrap"
 alias cbd="super-clean-all && scripts/build.sh"
 alias cbda="cbs && npx merna run build --stream --concurrency 1"
@@ -46,12 +46,14 @@ alias cloud-dep="scripts/build-pkg.sh -d -l -b smc cp"
 alias jenkins="gcloud compute ssh --project=nth-fort-242316 --zone=us-east4-c rest-jenkins-a --internal-ip"
 
 #git
-alias gcm="git checkout main && git pull"
-alias grim="git fetch && git rebase -i origin/main"
-alias gpf="git push --force-with-lease"
+alias gcm="git-fetch && git checkout main && git pull"
+alias grim="git-fetch && && git rebase -i origin/main"
+alias gpf="git-fetch && git push --force-with-lease"
 alias recent="git for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/"
 # navigate to top of repo
 alias cg='cd `git rev-parse --show-toplevel`'
+alias git-fetch='git fetch && git-fetch-remote-tags'
+alias git-fetch-remote-tags='git fetch --tags -f'
 
 # git custom functions
 source ~/scripts/git/git-helper-functions.sh
@@ -101,6 +103,7 @@ alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 pl
 alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 #copy linux-firmware fixes for ax200 bluetooth disconnect issues 
 alias copy-old-bluetooth-firmware='sudo cp /home/alex/Downloads/linux-firmware-20201218/intel/* /lib/firmware/intel/'
+alias rnnoise-start='~/scripts/start-pipewire-rnnoise-source.sh &'
 
 
 #gcp
