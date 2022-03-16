@@ -98,12 +98,13 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
 alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
 # plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
-alias restart-plasma='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell && killall kwin && DISPLAY=:0 kwin --replace'
+alias restart-plasma='DISPLAY=:0 kwin --replace'
 # reboot into windows from dual boot, windows is 3rd option in grub
 alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 #copy linux-firmware fixes for ax200 bluetooth disconnect issues 
 alias copy-old-bluetooth-firmware='sudo cp /home/alex/Downloads/linux-firmware-20201218/intel/* /lib/firmware/intel/'
 alias rnnoise-start='~/scripts/start-pipewire-rnnoise-source.sh &'
+alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.pci-0000_00_1f.3.analog-stereo"'
 
 
 #gcp

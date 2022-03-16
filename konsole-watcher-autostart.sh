@@ -1,3 +1,3 @@
 #!/bin/bash
 
-${HOME}/scripts/konsole-watcher.sh restore & > /dev/null
+${HOME}/scripts/konsole-watcher.sh & > /dev/null
