@@ -96,7 +96,7 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 
 #linux system
 alias grub-edit='kate /etc/default/grub'
-alias grub-build='grub-mkconfig -o /boot/grub/grub.cfg'
+alias grub-build='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
 alias vfio-edit='kate /etc/modprobe.d/vfio.conf'
 
