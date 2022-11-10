@@ -103,6 +103,8 @@ alias vfio-edit='kate /etc/modprobe.d/vfio.conf'
 alias highest-kernel-module='ls /usr/lib/modules | grep ^[0-9] | sort -nr | head -1'
 alias mkinitcpio-build='sudo mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img -k $(highest-kernel-module)'
 
+#audio things
+alias pipwrire-restart='systemctl --user restart pipewire pipewire-pulse'
 #alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
 # plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
 #alias restart-plasma='DISPLAY=:0 kwin --replace'
