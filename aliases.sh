@@ -56,13 +56,13 @@ alias git-fetch='git fetch && git-fetch-remote-tags'
 alias git-fetch-remote-tags='git fetch --tags -f'
 
 # git custom functions
-source ~/scripts/git/git-helper-functions.sh
+source ~/Documents/scripts/git/git-helper-functions.sh
 alias gc="__git_checkout_work_branch"
 alias gro="__git_reset_current_branch"
 
 # meta alias
 alias alias-load="source ~/.bashrc"
-alias alias-edit="code ~/scripts/aliases.sh"
+alias alias-edit="code ~/Documents/scripts/aliases.sh"
 
 # docker
 alias docker-clean-images='docker rmi $(docker images -a --filter=dangling=true -q)'
@@ -72,11 +72,11 @@ alias docker-maint='docker-clean-containers && docker-clean-images'
 #useful stuff
 alias plz='sudo $(fc -ln -1)'
 alias ls='lsColorGroupingOverride'
-alias install-npm-globals='~/scripts/install-npm-globals.sh'
+alias install-npm-globals='~/Documents/scripts/install-npm-globals.sh'
 
 # code-oss uses a different extensions repo. I want the microsoft repo.
 # Apply the https://github.com/VSCodium/vscodium/issues/418#issuecomment-643664182 fix
-alias fix-code-oss='sudo python3 ~/scripts/fix-oss.py'
+alias fix-code-oss='sudo python3 ~/Documents/scripts/fix-oss.py'
 
 # auto pipe ls -la to more as ls -la | more
 lsColorGroupingOverride() {
@@ -95,8 +95,9 @@ alias wapi-cut='wapi-version --jiraCreds ~/Downloads/jira-credentials.json cut-r
 
 
 #linux system
-alias grub-edit='kate /etc/default/grub'
-alias grub-build='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+#alias grub-edit='kate /etc/default/grub'
+#alias grub-build='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias logout='sudo pkill -KILL -u $USER'
 
 alias vfio-edit='kate /etc/modprobe.d/vfio.conf'
 
@@ -104,7 +105,7 @@ alias highest-kernel-module='ls /usr/lib/modules | grep ^[0-9] | sort -nr | head
 alias mkinitcpio-build='sudo mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img -k $(highest-kernel-module)'
 
 #audio things
-alias pipwrire-restart='systemctl --user restart pipewire pipewire-pulse'
+alias pipewire-restart='systemctl --user restart pipewire pipewire-pulse'
 #alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
 # plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
 #alias restart-plasma='DISPLAY=:0 kwin --replace'
@@ -112,9 +113,9 @@ alias pipwrire-restart='systemctl --user restart pipewire pipewire-pulse'
 alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 #copy linux-firmware fixes for ax200 bluetooth disconnect issues 
 #alias copy-old-bluetooth-firmware='sudo cp /home/alex/Downloads/linux-firmware-20201218/intel/* /lib/firmware/intel/'
-alias rnnoise-start='~/scripts/start-pipewire-rnnoise-source.sh &'
-alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.pci-0000_00_1f.3.analog-stereo"'
+alias rnnoise-start='~/Documents/scripts/start-pipewire-rnnoise-source.sh &'
+alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "audio-input-microphone" --latency 0 --delay 0'
 
 
 #gcp
-alias gcp-port-forward='~/scripts/gcp-port-forward.sh'
+alias gcp-port-forward='~/Documents/scripts/gcp-port-forward.sh'
