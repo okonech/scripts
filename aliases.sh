@@ -114,8 +114,13 @@ alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 #copy linux-firmware fixes for ax200 bluetooth disconnect issues 
 #alias copy-old-bluetooth-firmware='sudo cp /home/alex/Downloads/linux-firmware-20201218/intel/* /lib/firmware/intel/'
 alias rnnoise-start='~/Documents/scripts/start-pipewire-rnnoise-source.sh &'
-alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "audio-input-microphone" --latency 0 --delay 0'
-
+# start listening to ms computer audio out through loopback
+# find audio device name with: pactl list sources or pw-cli list-objects | grep alsa_input
+# digital audio out is: alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
+# old digital
+# alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo" --latency 0 --delay 0'
+alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo.3" --latency 0 --delay 0'
+# alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.analog-stereo" --latency 0 --delay 0'
 
 #gcp
 alias gcp-port-forward='~/Documents/scripts/gcp-port-forward.sh'
