@@ -107,8 +107,12 @@ alias mkinitcpio-build='sudo mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initram
 #audio things
 alias pipewire-restart='systemctl --user restart pipewire pipewire-pulse'
 #alias restart-pulseaudio='systemctl --user restart pulseaudio.socket pulseaudio.service'
+
+
 # plasmashell, for rare cases when screen freezes and you are forced to ctrl + alt + F2 into a shell to fix it
 #alias restart-plasma='DISPLAY=:0 kwin --replace'
+alias rspl='plasmashell --replace &'
+
 # reboot into windows from dual boot, windows is 3rd option in grub
 alias reboot-windows='sudo grub-editenv - set next_entry=2 && reboot'
 #copy linux-firmware fixes for ax200 bluetooth disconnect issues 
@@ -118,8 +122,8 @@ alias rnnoise-start='~/Documents/scripts/start-pipewire-rnnoise-source.sh &'
 # find audio device name with: pactl list sources or pw-cli list-objects | grep alsa_input
 # digital audio out is: alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
 # old digital
-# alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo" --latency 0 --delay 0'
-alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo.3" --latency 0 --delay 0'
+alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo" --latency 0 --delay 0'
+# alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo.3" --latency 0 --delay 0'
 # alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.analog-stereo" --latency 0 --delay 0'
 
 #gcp
