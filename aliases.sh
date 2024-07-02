@@ -122,7 +122,8 @@ alias rnnoise-start='~/Documents/scripts/start-pipewire-rnnoise-source.sh &'
 # find audio device name with: pactl list sources or pw-cli list-objects | grep alsa_input
 # digital audio out is: alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
 # old digital
-alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo" --latency 0 --delay 0'
+alias microsoft-computer-audio-in-loopback='pw-loopback -C "alsa_input.usb-Generic_USB_Audio-00.HiFi__Mic1__source" --latency 0 --delay 0'
+#alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo" --latency 0 --delay 0'
 # alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.iec958-stereo.3" --latency 0 --delay 0'
 # alias microsoft-computer-audio-in-loopback='pw-loopback -m "[[FL FR]]" --playback-props="[media.class=Audio/Source]" -C "alsa_input.usb-Generic_USB_Audio-00.analog-stereo" --latency 0 --delay 0'
 
